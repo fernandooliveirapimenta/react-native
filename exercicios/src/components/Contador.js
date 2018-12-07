@@ -7,7 +7,7 @@ export default class  Contador extends React.Component{
       numero: this.props.numeroInicial
     };
 
-    maisUm = () => {
+    maisUm () {
         this.setState({numero: this.state.numero + 1});
     };
 
@@ -21,7 +21,7 @@ export default class  Contador extends React.Component{
             <View>
                 <Text style={{fontSize: 40}}>{this.state.numero}</Text>
                 <TouchableHighlight
-                    onPress={this.maisUm}
+                    onPress={() => this.maisUm()}
                     onLongPress={this.limpar}>
                     <Text >Incrementar/Zerar</Text>
                 </TouchableHighlight>

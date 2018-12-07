@@ -5,8 +5,24 @@ import ParImpar from "./components/ParImpar";
 import {Inverter, MegaSena} from "./components/Multi";
 import {createDrawerNavigator, createAppContainer} from 'react-navigation';
 import Contador from "./components/Contador";
+import Plataforma from "./components/Plataforma";
+import ValidarProps from "./components/ValidarProps";
+import Evento from "./components/Evento";
+import Avo from './components/ComunicacaoDireta'
 
 const Menu = createDrawerNavigator({
+    ComunicacaoDireta: {
+     screen: () => <Avo/>
+    },
+    Evento: {
+     screen: () => <Evento/>
+    },
+    ValidarProps: {
+     screen: () => <ValidarProps ano={18}/>
+    },
+    Plataforma: {
+      screen: () => <Plataforma/>
+    },
     Contador: {
       screen: () => <Contador numeroInicial={100}/>
     },
