@@ -9,8 +9,12 @@ import Plataforma from "./components/Plataforma";
 import ValidarProps from "./components/ValidarProps";
 import Evento from "./components/Evento";
 import Avo from './components/ComunicacaoDireta'
+import TextoSincronizado from "./components/ComunicacaoIndireta";
 
 const Menu = createDrawerNavigator({
+    TextoSincronizado: {
+        screen: () => <TextoSincronizado/>
+    },
     ComunicacaoDireta: {
      screen: () => <Avo/>
     },
