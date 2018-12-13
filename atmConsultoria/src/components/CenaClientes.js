@@ -1,6 +1,5 @@
 import React from 'react';
 import { StatusBar, View, Image, StyleSheet , Text} from 'react-native';
-import BarraNavegacao from './BarraNavegacao';
 
 const detalheCliente = require('../../assets/detalhe_cliente.png');
 const cliente1 = require('../../assets/cliente1.png');
@@ -8,9 +7,8 @@ const cliente2 = require('../../assets/cliente2.png');
 export default class CenaClientes extends React.Component {
   render() {
     return (
-      <View>
+      <View style={{flex: 1, backgroundColor: '#FFF'}}>
         <StatusBar hidden backgroundColor= '#CCC' />
-        <BarraNavegacao/>
             <View style={styles.cabecalho}>
                 <Image source={detalheCliente}/>
                 <Text style={styles.txtTitulo}>Nossos Clientes</Text>

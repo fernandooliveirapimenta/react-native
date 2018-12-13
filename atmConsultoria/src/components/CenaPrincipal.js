@@ -1,5 +1,5 @@
 import React from 'react';
-import { StatusBar, View, Image, StyleSheet } from 'react-native';
+import { Button,TouchableHighlight,StatusBar, View, Image, StyleSheet } from 'react-native';
 import BarraNavegacao from './BarraNavegacao';
 
 const logo = require('../../assets/logo.png');
@@ -12,19 +12,28 @@ export default class CenaPrincipal extends React.Component {
     return (
       <View>
         <StatusBar hidden backgroundColor= '#CCC' />
-        
-        <BarraNavegacao/>
         <View style={styles.logo}>
             <Image source={logo}/>
         </View>
         <View style={styles.menu}>
             <View style={styles.menuGrupo}>
-                <Image style={styles.imgMenu} source={menuCliente}/>
-                <Image style={styles.imgMenu} source={menuContato}/>
+                <TouchableHighlight
+                underlayColor={'#B9C941'}
+                activeOpacity={0.3}
+                 onPress={() => this.props.navigation.navigate('CenaClientes')}>
+                    <Image style={styles.imgMenu} source={menuCliente}/>
+                </TouchableHighlight>
+                <TouchableHighlight onPress={() => this.props.navigation.navigate('CenaContatos')}>
+                    <Image style={styles.imgMenu} source={menuContato}/>
+                </TouchableHighlight>
             </View>
             <View style={styles.menuGrupo}>
-                <Image style={styles.imgMenu} source={menuEmpresa}/>
-                <Image style={styles.imgMenu} source={menuServico}/>
+                <TouchableHighlight onPress={() => this.props.navigation.navigate('CenaEmpresa')}>
+                    <Image style={styles.imgMenu} source={menuEmpresa}/>
+                </TouchableHighlight>
+                <TouchableHighlight onPress={() => this.props.navigation.navigate('CenaServico')}>
+                    <Image style={styles.imgMenu} source={menuServico}/>
+                </TouchableHighlight>
             </View>
         </View>
       </View>
