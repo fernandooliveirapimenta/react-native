@@ -1,11 +1,9 @@
 import React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import {View, Text,Button, StyleSheet} from 'react-native';
 
 export default Comando = props =>  {
   return (
-      <View>
-          <Text>Comando</Text>
-      </View>
+      <Button title="Calcular" onPress={props.acao}/>
   );
 };
 

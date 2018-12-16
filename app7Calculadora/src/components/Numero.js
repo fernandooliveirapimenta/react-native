@@ -3,7 +3,9 @@ import {View, TextInput, StyleSheet} from 'react-native';
 
 export default Numero = props =>  {
   return (
-          <TextInput style={styles.numero}/>
+          <TextInput style={styles.numero} 
+          value={props.num} 
+          onChangeText={valor => props.atualizaValor(props.nome,valor)}/>
   );
 };
 

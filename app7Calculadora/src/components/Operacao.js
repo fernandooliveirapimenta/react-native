@@ -1,17 +1,24 @@
 import React from 'react';
 import {View, Text, StyleSheet, Picker} from 'react-native';
 
-export default Operacao = props =>  {
-  return (
-      <Picker>
-          <Picker.Item label='Soma' value='soma'/>
-          <Picker.Item label='Subtracao' value='subtracao'/>
-      </Picker>
-  );
+export default class Operacao extends React.Component  {
+
+    render() {
+
+        return (
+            <Picker 
+            style={styles.operacao}
+            selectedValue={this.props.operacao}
+            onValueChange={operacao => this.props.atualizaOperacao(operacao)}>
+                <Picker.Item label='Soma' value='soma'/>
+                <Picker.Item label='Subtracao' value='subtracao'/>
+            </Picker>
+        );
+    }
 };
 
 const styles = StyleSheet.create({
-    Operacao: {
+    operacao: {
         marginTop: 15,
         marginBottom: 15
     }
