@@ -6,11 +6,20 @@ import commonStyles from "../commonStyles";
 import moment from 'moment';
 import 'moment/locale/pt-br';
 
-const initialState = { desc: '', date: new Date()};
 
 export default class AddTask extends Component{
 
-    state = {...initialState};
+    constructor(props) {
+        super(props);
+        this.state = this.getInitialState();
+    }
+
+    getInitialState = () => {
+        return {
+            desc: '',
+            date: new Date()
+        }
+    };
 
     save = () => {
         if(!this.state.desc.trim()){
@@ -19,7 +28,6 @@ export default class AddTask extends Component{
         }
         const date = {...this.state};
         this.props.onSave(date);
-        this.setState({...initialState});
     };
 
     handleDateAndroid = () => {
@@ -59,7 +67,8 @@ export default class AddTask extends Component{
             <Modal
                 onRequestClose={this.props.onCancel}
                 visible={this.props.isVisible}
-                animationType={'slide'} transparent={true}>
+                animationType={'slide'} transparent={true}
+            onShow={() => this.setState({ ...this.getInitialState()})}>
                 <TouchableWithoutFeedback onPress={this.state.onCancel}>
                    <View style={styles.offset}></View>
                 </TouchableWithoutFeedback>
