@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {StyleSheet,Text,View,ImageBackground,TouchableOpacity,Alert} from 'react-native';
+import {StyleSheet,Text,View,ImageBackground,TouchableOpacity,Alert,AsyncStorage} from 'react-native';
 import commonStyles from '../commonStyles';
 import backgroundImage from '../../assets/imgs/login.jpg';
 import AuthInput from '../components/AuthInput';
@@ -25,12 +25,14 @@ export default class Auth extends Component{
                 console.log(res);
                 axios.defaults.headers.common['Authorization'] = 
                 `bearer ${res.data.token}`;
+                
+                AsyncStorage.setItem('userData', JSON.stringify(res.data));
 
-                this.props.navigation.navigate('Home');
+                this.props.navigation.navigate('Home', res.data);
             } catch (error) {
                 showError(error);
             }
-    }
+    };
 
     signup = async () => {
            try {
@@ -45,7 +47,7 @@ export default class Auth extends Component{
            } catch (error) {
               showError(error);
            }
-    }
+    };
 
     signinOrSignup = async () => {
         console.log(server);
