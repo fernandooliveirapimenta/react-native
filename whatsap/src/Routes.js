@@ -2,19 +2,38 @@ import React from 'react';
 import { createAppContainer, createStackNavigator, StackActions, NavigationActions } from 'react-navigation';
 import FormLogin from './components/FormLogin';
 import FormCadastro from './components/FormCadastro';
+import BoasVindas from './components/BoasVindas';
+import Principal from './components/Principal';
 
 const Navigator = createStackNavigator({
   FormLogin: {
       screen: FormLogin,
-       navigationOptions: () => ({ title: `Login` })
+       navigationOptions: () => ({header: null})
     },
   FormCadastro: {
       screen: FormCadastro,
        navigationOptions: () => ({ title: `Cadastro` })
     },
-
+  BoasVindas: {
+      screen: BoasVindas,
+       navigationOptions: () => ({ header: null })
+    },
+  Principal: {
+      screen: Principal,
+       navigationOptions: () => ({ header: null })
+    },
 }, {
-  initialRouteName: 'FormLogin'
+  initialRouteName: 'FormLogin',
+  defaultNavigationOptions: {
+    headerStyle: {
+      backgroundColor: '#115E54',
+    },
+    headerTintColor: '#fff',
+    headerTitleStyle: {
+      fontWeight: 'bold',
+      justifyContent: 'flex-end'
+    },
+  },
 }) ; 
 
 

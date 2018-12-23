@@ -1,7 +1,7 @@
 import React , {Component} from 'react';
 import {ImageBackground, View, Button,Text, TextInput, TouchableHighlight } from 'react-native';
 import {connect} from 'react-redux';
-import {modificaEmail,modificaSenha} from '../action/AutenticacaoActions';
+import {modificaEmail,modificaSenha,autenticarUsuario} from '../action/AutenticacaoActions';
 
 class FormLogin extends Component {
     render() {
@@ -22,12 +22,14 @@ class FormLogin extends Component {
                         placeholder='Senha'
                         placeholderTextColor='#fff'
                         onChangeText={texto => this.props.modificaSenha(texto)}></TextInput>
+                        <Text style={{fontSize: 18, color:'#ff0000'}}>{this.props.erroLogin}</Text>
                         <TouchableHighlight onPress={()=> this.props.navigation.navigate('FormCadastro')}>
-                            <Text style={{fontSize: 20, color:'#fff'}}>AAinda nao tem cadastro? Cadastre-se</Text>
+                            <Text style={{fontSize: 20, color:'#fff'}}>Ainda nao tem cadastro? Cadastre-se</Text>
                         </TouchableHighlight>
                     </View>
                     <View style={{flex: 2}}>
-                        <Button title='Acessar' color='#115E54' onPress={() => false}/>
+                        <Button title='Acessar' color='#115E54'
+                         onPress={() => this.props.autenticarUsuario({email,senha} = this.props)}/>
                     </View>
                 </View>
             </ImageBackground>
@@ -39,9 +41,10 @@ class FormLogin extends Component {
 const mapStateToProps = state => (
     {
         email: state.AutenticacaoReducer.email,
-        senha: state.AutenticacaoReducer.senha
+        senha: state.AutenticacaoReducer.senha,
+        erroLogin: state.AutenticacaoReducer.erroLogin,
     }
 )
 
-export default connect(mapStateToProps, {modificaEmail,modificaSenha})(FormLogin);
+export default connect(mapStateToProps, {modificaEmail,modificaSenha,autenticarUsuario})(FormLogin);
     

@@ -5,6 +5,7 @@ import {createStore, applyMiddleware} from 'redux';
 import reducers from './src/reducers';
 import firebase from 'firebase';
 import ReduxThunk from 'redux-thunk';
+import NavigationService from './src/NavigationService';
 
 
 export default class App extends React.Component {
@@ -23,7 +24,9 @@ export default class App extends React.Component {
   render() {
     return (
       <Provider store={createStore(reducers, {}, applyMiddleware(ReduxThunk))}>
-        <NavigatorContainer/>
+        <NavigatorContainer ref={navigatorRef => {
+          NavigationService.setTopLevelNavigator(navigatorRef);
+        }}/>
       </Provider>
     );
   }
