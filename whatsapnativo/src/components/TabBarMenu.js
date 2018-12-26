@@ -2,8 +2,11 @@ import React from 'react';
 import { View, Text,StatusBar,Image, TouchableHighlight} from 'react-native';
 import {TabBar} from 'react-native-tab-view';
 import NavigationService from '../NavigationService';
+import {connect} from 'react-redux';
+import {habilitarInclusaoContato} from '../action/AppActions';
 
-export default class TabBarMenu extends React.Component{
+
+class TabBarMenu extends React.Component{
 
     render() {
         return (
@@ -16,7 +19,8 @@ export default class TabBarMenu extends React.Component{
                         <View style={{width: 50, justifyContent: 'center', alignItems: 'center'}}>
                         <TouchableHighlight
                         underlayColor='#114D44'
-                         onPress = { ()=> NavigationService.navigate('AdicionarContato')}>
+                         onPress = { ()=> {NavigationService.navigate('AdicionarContato');
+                         this.props.habilitarInclusaoContato()}}>
                             <Image source={require('../../assets/adicionar-contato.png')}/>
                         </TouchableHighlight>
                         </View>
@@ -32,3 +36,12 @@ export default class TabBarMenu extends React.Component{
         ); 
     }
 }
+
+mapStateToProps = state => (
+    {
+        adiciona_contato_email: state.AppReducer.adiciona_contato_email,
+        cadastro_resultado_txt_erro: state.AppReducer.cadastro_resultado_txt_erro,
+        cadastro_resultado_inclusao: state.AppReducer.cadastro_resultado_inclusao
+    }
+)
+export default connect(null, {habilitarInclusaoContato})(TabBarMenu); 
