@@ -4,6 +4,7 @@ import {TabBar} from 'react-native-tab-view';
 import NavigationService from '../NavigationService';
 import {connect} from 'react-redux';
 import {habilitarInclusaoContato} from '../action/AppActions';
+import firebase from 'react-native-firebase';
 
 
 class TabBarMenu extends React.Component{
@@ -17,16 +18,22 @@ class TabBarMenu extends React.Component{
                     </View>
                     <View style={{flexDirection:'row',marginRight:30}}>
                         <View style={{width: 50, justifyContent: 'center', alignItems: 'center'}}>
-                        <TouchableHighlight
-                        underlayColor='#114D44'
-                         onPress = { ()=> {NavigationService.navigate('AdicionarContato');
-                         this.props.habilitarInclusaoContato()}}>
-                            <Image source={require('../../assets/adicionar-contato.png')}/>
+                            <TouchableHighlight
+                            underlayColor='#114D44'
+                            onPress = { ()=> {NavigationService.navigate('AdicionarContato');
+                            this.props.habilitarInclusaoContato()}}>
+                                <Image source={require('../../assets/adicionar-contato.png')}/>
+                            </TouchableHighlight>
+                        </View>
+                        <TouchableHighlight onPress={() => 
+                        firebase
+                        .auth().signOut()
+                        .then(() => NavigationService.navigate('FormLogin'))}>
+                            <View style= {{justifyContent: 'center'}} >
+                                <Text style={{fontSize: 20, color: '#fff'}}>Sair</Text>
+                            </View>
                         </TouchableHighlight>
-                        </View>
-                        <View style= {{justifyContent: 'center'}} >
-                            <Text style={{fontSize: 20, color: '#fff'}}>Sair</Text>
-                        </View>
+                        
                     </View>
                  </View>
                 <TabBar {...this.props} 

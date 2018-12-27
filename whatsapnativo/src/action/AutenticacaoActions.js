@@ -77,10 +77,8 @@ const loginUsuarioSucesso = (dispatch,navigation) => {
             type: LOGIN_USUARIO_SUCESSO,
         }
     )
-    console.log(navigation);
     
     NavigationService.navigate('Principal', {});
-    // navigation.navigate('Principal');
 }
 
 const loginUsuarioErro = (erro,dispatch) => {
