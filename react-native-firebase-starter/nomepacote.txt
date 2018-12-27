@@ -1,0 +1,6 @@
+Set project parameters to:
+---------------------------------------------------------
+Project name:  projetoBaseFirebase
+Company name:  prevent
+Package name:  com.prevent.projetobasefirebase
+-------------------------------------------------------
