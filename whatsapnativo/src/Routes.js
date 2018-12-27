@@ -5,6 +5,7 @@ import FormCadastro from './components/FormCadastro';
 import BoasVindas from './components/BoasVindas';
 import Principal from './components/Principal';
 import AdicionarContato from './components/AdicionarContato';
+import Conversa from './components/Conversa';
 
 const Navigator = createStackNavigator({
   FormLogin: {
@@ -26,6 +27,9 @@ const Navigator = createStackNavigator({
   AdicionarContato: {
       screen: AdicionarContato,
        navigationOptions: () => ({ title: 'Adicionar Contato' })
+    },
+  Conversa: {
+      screen: Conversa
     },
 }, {
   initialRouteName: 'FormLogin',
